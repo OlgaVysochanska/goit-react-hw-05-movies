@@ -1,11 +1,11 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import options from './options';
 
 export const Navbar = () => {
   const elements = options.map(({ id, text, link }) => (
     <li key={id}>
-      <Link to={link}>{text}</Link>
+      <NavLink to={link}>{text}</NavLink>
     </li>
   ));
 
