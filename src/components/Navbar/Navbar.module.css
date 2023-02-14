@@ -1,0 +1,19 @@
+.menu {
+    list-style: none;
+    display: flex;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 30px;
+    gap: 20px;
+}
+
+.option {
+    font-size: 26px;
+    font-weight: bold;
+    color: rgb(58, 57, 57);
+    text-decoration: none;
+}
+
+.option:global(.active) {
+    color: red;
+}

@@ -9,7 +9,7 @@ const options = [
     {
         id: nanoid(),
         text: "Movies",
-        link: "/"
+        link: "movies"
     }
 ]
 

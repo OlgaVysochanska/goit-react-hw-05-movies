@@ -1,18 +1,22 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
-import { Navbar } from 'components/Navbar/Navbar';
-import { HomePage } from 'pages/HomePage/HomePage';
-import { MoviesPage } from 'pages/MoviesPage/MoviesPage';
+import { Layout } from 'components/Layout/Layout';
+import { HomePage } from 'pages/HomePage';
+import { MoviesPage } from 'pages/MoviesPage';
+import { MovieDetailsPage } from 'pages/MovieDetailsPage';
 
 export const App = () => {
   return (
-    <BrowserRouter>
-      <Navbar />
+    <>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/movies" element={<MoviesPage />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={ <HomePage /> } />
+          <Route path="movies" element={<MoviesPage />}>
+            <Route path=":id" element={<MovieDetailsPage />} />
+          </Route>
+        </Route>
       </Routes>
-    </BrowserRouter>
+    </>
   );
 };
 
