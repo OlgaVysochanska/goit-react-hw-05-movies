@@ -1,26 +1,29 @@
 import { useEffect, useState } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import { getTrending } from 'components/shared/services/moviesAPI';
 
-export const HomePage = () => {
+const HomePage = () => {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
     getTrending().then(setMovies);
   }, []);
 
-  console.log(movies);
+  const location = useLocation();
 
   const elements = movies.map(movie => (
     <li key={movie.id}>
-      <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
+      <Link to={`/movies/${movie.id}`} state={{ from: location }}>
+        {movie.title}
+      </Link>
     </li>
   ));
 
   return (
     <>
       <ul>{elements}</ul>
-      <Outlet />
     </>
   );
 };
+
+export default HomePage;
