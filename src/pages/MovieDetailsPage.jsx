@@ -4,5 +4,9 @@ export const MovieDetailsPage = () => {
     const movie = useFetchMovie();
 
     console.log( movie );
-    return <p>Movie details</p>
+    return (
+        <>
+            { movie && <div>{ movie.title }</div>}
+        </>
+    )
 }

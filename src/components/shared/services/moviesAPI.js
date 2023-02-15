@@ -13,6 +13,6 @@ export const getTrending = async () => {
 };
 
 export const fetchMovieById = async (id) => {
-    const { data } = await instance.get( `movies/${ id }` );
+    const { data } = await instance.get( `/movie/${ id }` );
     return data;
 }

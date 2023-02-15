@@ -8,8 +8,15 @@ export const useFetchMovie = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetchMovieById( id ).then( setMovie );
-    console.log( movie );
-    return movie;
+    const fetchMovies = async () => {
+      try {
+        const data = await fetchMovieById(id);
+        setMovie(data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchMovies();
   }, [id]);
+  return movie;
 };
