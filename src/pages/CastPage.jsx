@@ -19,21 +19,25 @@ const CastPage = () => {
     fetchCast();
   }, [id]);
 
+  const elements = cast.map(({ id, name, character, profile_path }) => (
+    <li key={id}>
+      {profile_path && (
+        <img
+          src={`https://image.tmdb.org/t/p/w500/${profile_path}`}
+          alt=""
+          width="200"
+        ></img>
+      )}
+      <p>{name}</p>
+      <p>{character}</p>
+    </li>
+  ));
+
   return (
     <ul>
-      {cast.map(({ id, name, character, profile_path }) => (
-        <li key={id}>
-          {profile_path && (
-            <img
-              src={`https://image.tmdb.org/t/p/w500/${profile_path}`}
-              alt=""
-              width="200"
-            ></img>
-          )}
-          <p>{name}</p>
-          <p>{character}</p>
-        </li>
-      ))}
+      {elements.length === 0
+        ? "We don't have any reviews for this movie"
+        : elements}
     </ul>
   );
 };
